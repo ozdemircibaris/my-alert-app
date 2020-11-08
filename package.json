@@ -10,8 +10,11 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/datetimepicker": "^3.0.4",
     "@react-native-firebase/app": "^8.4.7",
+    "@react-native-firebase/messaging": "^7.9.2",
     "axios": "^0.21.0",
+    "moment": "^2.29.1",
     "react": "16.13.1",
     "react-native": "0.63.3",
     "react-native-gesture-handler": "^1.8.0",
