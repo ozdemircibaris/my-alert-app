@@ -2,10 +2,12 @@ import {
     FETCH_TASKS,
     ADD_TASK_CLICK,
     ADD_TASK_SUCCESS,
+    ADD_TASK_FINALLY,
 } from "../actions/tasksAction";
 
 const INITIAL_STATE = {
-    tasksValues: []
+    tasksValues: [],
+    addTaskStatus: ""
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -22,7 +24,8 @@ export default (state = INITIAL_STATE, action) => {
             })
             return {
                 ...state,
-                tasksValues: action.payload
+                tasksValues: action.payload,
+                addTaskStatus: ""
             }
         case ADD_TASK_CLICK:
             return {
@@ -32,6 +35,11 @@ export default (state = INITIAL_STATE, action) => {
             state.tasksValues.splice(0, 0, action.payload)
             return {
                 ...state,
+            }
+        case ADD_TASK_FINALLY:
+            return {
+                ...state,
+                addTaskStatus: "finally"
             }
         default:
             return state;

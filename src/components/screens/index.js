@@ -28,10 +28,16 @@ export class Index extends Component {
             </View>
         )
     }
+
+    componentDidUpdate(props) {
+        const { addTaskStatus } = this.props;
+        if(addTaskStatus == "finally") {
+            console.log('addTaskStatus', addTaskStatus)
+            this.props.fetchTasks()
+        }
+    }
     render() {
         const { tasksValues } = this.props;
-        // console.log('tasksValues ', tasksValues.length > 0 ? Date.parse(tasksValues[14].jobDate) - Date.parse(tasksValues[13].jobDate):null)
-        // console.log('tasksValues ', Date.parse(tasksValues[15].jobDate) - Date.parse(tasksValues[14].jobDate))
         return (
             <View style={styles.container}>
                 <FlatList
@@ -94,9 +100,10 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = (state) => {
-    const { tasksValues } = state.TasksReducer;
+    const { tasksValues, addTaskStatus } = state.TasksReducer;
     return {
-        tasksValues
+        tasksValues,
+        addTaskStatus
     }
 }
 
